@@ -1,0 +1,199 @@
+<?xml version="1.0"?><!--Prototype du fichier xml-->
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XmlSchema.xsd to edit this template
+-->
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:cab="http://univ-grenoble-alpes.fr/Dembele/Cabinet"
+           targetNamespace="http://univ-grenoble-alpes.fr/Dembele/Cabinet"
+           elementFormDefault="qualified"><!--Définition et préfixage du nouveau vocabulaire(targetNamespace), du langage par defaut, du langage xsd,
+        et la directive pour tous les documents voulant se conformer à un XMLSchema-->
+    <!--Racine du schema-->
+    <xs:element name="cabinet" type="cab:Cabinet">
+        <!--Définition de la clé d'existence-->
+        <xs:keyref name = "exigId" refer="cab:uniqId" >
+            <!--utilisation de xpath pour selectionner chaque noeud visite suivant
+             le lien cab:patients/cab:patient/cab:visite -->
+            <xs:selector xpath = "cab:patients/cab:patient/cab:visite"/> 
+            <!--Utilisation de xpath pour appliquer la clé d'unicité sur l'attribut intervenant-->
+            <xs:field xpath = "@intervenant"/> 
+        </xs:keyref>
+    </xs:element> 
+    <!--Défintion du type complexe Cabinet-->
+    <xs:complexType name="Cabinet"> 
+        <xs:sequence>
+        <!--Défintion des elements nom, adresse, infirmiers, patients avec le 
+            nombre d'occurence minimum et maximum à 1-->
+            <xs:element name="nom" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="adresse" type="cab:Adresse" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="infirmiers" type="cab:Infirmiers" minOccurs="1" maxOccurs="1">
+                <!--Définition de la clé d' unicité-->
+                <xs:key name = "uniqId">
+                    <!--utilisation de xpath pour selectionner chaque noeud infirmier-->
+                    <xs:selector xpath = "cab:infirmier"/>
+                    <!--Utilisation de xpath pour appliquer la clé d'unicité sur l'attribut id-->
+                    <xs:field xpath = "@id"/>
+                </xs:key>
+            </xs:element>
+            <xs:element name="patients" type="cab:Patients" minOccurs="1" maxOccurs="1"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!--Défintion du type complexe Patients-->
+    <xs:complexType name="Patients">
+        <xs:sequence>
+            <xs:element name="patient" type="cab:Patient" minOccurs="1" maxOccurs="unbounded">
+            <!--L'element patient peut apparaître au minimum une fois et autant de fois-->
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType> 
+    <!--Défintion du type complexe Infirmiers-->
+    <xs:complexType name="Infirmiers">
+        <xs:sequence>
+            <xs:element name="infirmier" type="cab:Infirmier" minOccurs="3" maxOccurs="unbounded">
+            <!--L'element infirmier de type Infirmier peut apparaître au minimum 3 fois et autant de fois-->
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType> 
+    <!--Défintion du type complexe Adresse-->
+    <xs:complexType name="Adresse">
+        <xs:sequence>
+            <xs:element name="numero" type="xs:int" minOccurs="0" maxOccurs="1">
+            <!--L'element numero de type int peut ne pas apparaître  et apparaitre au maximum une fois-->
+            </xs:element>
+            <xs:element name="rue" type="xs:string" minOccurs="1" maxOccurs="1">
+            <!--L'element rue de type string peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="ville" type="xs:string" minOccurs="1" maxOccurs="1" >
+            <!--L'element ville de type string peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="codePostal" type="cab:CodePostal" minOccurs="1" maxOccurs="1" >
+            <!--L'element codePostal de type CodePostal peut apparaître une et une seule fois-->
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType> 
+    <!--Défintion du type complexe Infirmier-->
+    <xs:complexType name="Infirmier">
+        <xs:sequence>
+            <xs:element name="nom" type="xs:string" minOccurs="1" maxOccurs="1">
+            <!--L'element nom de type string peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="prenom" type="xs:string" minOccurs="1" maxOccurs="1">
+            <!--L'element prenom de type string peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="photo" type="cab:Photo" minOccurs="1" maxOccurs="1" >
+            <!--L'element photo de type Photo peut apparaître une et une seule fois-->
+            </xs:element>
+        </xs:sequence>
+        <!--L'element infirmier contient forcement un attribut id de type Id-->
+        <xs:attribute name="id" type="cab:Id" use ="required"/>
+    </xs:complexType> 
+    <!--Défintion du type complexe Patient-->
+    <xs:complexType name="Patient">
+        <xs:sequence>
+            <xs:element name="nom" type="xs:string" minOccurs="1" maxOccurs="1">
+            <!--L'element nom de type string peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="prenom" type="xs:string" minOccurs="1" maxOccurs="1">
+            <!--L'element prenom de type string peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="sexe" type="cab:Sexe" minOccurs="1" maxOccurs="1" >
+            <!--L'element sexe de type Sexe peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="naissance" type="xs:date" minOccurs="1" maxOccurs="1" >
+            <!--L'element naissance de type date peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="numero" type="cab:Numero"  minOccurs="0" maxOccurs="1">
+            <!--L'element numero de type Numero peut ne pas apparaître  et apparaître 
+            au maximum une seule fois-->
+            </xs:element>
+            <xs:element name="adresse" type="cab:Adressep" minOccurs="1" maxOccurs="1" >
+            <!--L'element adresse de type Adressep peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="visite" type="cab:Visite" minOccurs="1" maxOccurs="1" >
+            <!--L'element visite de type Visite peut apparaître une et une seule fois-->
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType> 
+    <!--Défintion du type complexe Adressep-->
+    <xs:complexType name="Adressep">
+        <xs:sequence>
+            <xs:element name="etage" type="xs:int" minOccurs="0" maxOccurs="1" >
+            <!--L'element etage de type int peut ne pas apparaître  et apparaître 
+            au maximum une seule fois-->
+            </xs:element>
+            <xs:element name="numero" type="xs:int" minOccurs="0" maxOccurs="1">
+            <!--L'element numero de type int peut ne pas apparaître  et apparaître 
+            au maximum une seule fois-->
+            </xs:element>
+            <xs:element name="rue" type="xs:string" minOccurs="1" maxOccurs="1">
+            <!--L'element etage de type int peut apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="ville" type="xs:string" minOccurs="1" maxOccurs="1" >
+             <!--L'element ville de type string et apparaître une et une seule fois-->
+            </xs:element>
+            <xs:element name="codePostal" type="cab:CodePostal" minOccurs="1" maxOccurs="1" >
+             <!--L'element codePostal de type CodePostal peut apparaître une et une seule fois-->
+            </xs:element>
+            
+        </xs:sequence>
+    </xs:complexType> 
+    <!--Défintion du type complexe Visite-->
+    <xs:complexType name="Visite">
+        <xs:sequence>
+            <!--L'element acte de type Acte peut apparaître au minimum une fois et sans limite-->
+            <xs:element name="acte" type="cab:Acte" minOccurs="1" maxOccurs="unbounded">
+            </xs:element>
+        </xs:sequence>
+        <!--L'element visite doit forcement contenir un attribut date de type date-->
+        <xs:attribute name="date" type="xs:date" use ="required"/> 
+         <!--L'element intervenant peut contenir un attribut intervenant de type Id-->
+        <xs:attribute name="intervenant" type="cab:Id" />
+    </xs:complexType> 
+    <!--Défintion du type complexe Acte-->
+    <xs:complexType name="Acte">
+        <xs:attribute name="id" type="cab:Id" use ="required" />
+        <!--Les elements de type Acte doivent
+        forcement avoir un attribut id de type Id-->
+    </xs:complexType>
+    <!--Défintion du type simple CodePostal-->
+    <xs:simpleType name="CodePostal">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{5}"/>
+            <!--restriction sur le type string, les elements de type CodePostale doivent
+            être une suite de 15 cchiffres-->
+        </xs:restriction>
+    </xs:simpleType>
+    <!--Défintion du type simple Photo-->
+    <xs:simpleType name="Photo">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z]([abcdefghijklmnopqrstvuwxyzéèêàçâûôî-])*.(png|jpg)"/>
+            <!--restriction sur le type string, les elements de type Photo peuvent
+            prendre que la forme nom.png ou nom.jpg avec nom en miniscule-->
+        </xs:restriction>
+    </xs:simpleType>
+    <!--Défintion du type simple Sexe-->
+    <xs:simpleType name="Sexe">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[MF]"/>
+            <!--restriction sur le type string, les elements de type Sexe peuvent
+             prendre que la valeur M ou F-->
+        </xs:restriction>
+    </xs:simpleType>
+    <!--Défintion du type simple Numero-->
+    <xs:simpleType name="Numero">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{15}"/>
+            <!--restriction sur le type string, les elements de type Numero doivent
+            être une suite de 15 cchiffres-->
+        </xs:restriction>
+    </xs:simpleType>
+    <!--Défintion du type simple Id-->
+    <xs:simpleType name="Id">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{3}"/>
+            <!--restriction sur le type string, les elements de type Id doivent
+            être une suite de 3 chiffres-->
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

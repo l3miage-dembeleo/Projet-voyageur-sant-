@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Prototype du fichier xml-->
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+<!--Ici, nous avons d'espaces de nom, ni d'alocation du chemin vers un schema, car nous avons continuer la suite avec 
+le fichier cabinet.xml qui lui contient les espaces de nom et est contraint au fichier cabinet.xsd-->
+<cabinet>
+    <nom>Soins à Grenoble</nom>
+    <adresse>
+        <numéro>60</numéro>
+        <rue>rue de la Chimie</rue>
+        <ville>Grenoble</ville>
+        <codePostal>38041</codePostal>
+        
+       
+    </adresse>
+    <infirmiers>
+        <infirmier id="001">
+            <nom>Fréchie</nom>
+            <prénom>Sarah</prénom>
+            <photo>sarah.png</photo>
+        </infirmier>
+        <infirmier id="002">
+            <nom>Stické</nom>
+            <prénom>Sophie</prénom>
+            <photo>sophie.jpg</photo>
+        </infirmier>
+        <infirmier id="003">
+            <nom>Ochon</nom>
+            <prénom>Paul</prénom>
+            <photo>paul.png</photo>
+        </infirmier>
+    </infirmiers>
+    <patients>
+        <patient>
+            <!-- Homme, né en oaût 98 en France,
+            à Marseille (n° 55 en bouches du rhône)
+                        458e naissance
+                             -->
+            <nom>Alécole</nom>
+            <prénom>Yvon</prénom>
+            <sexe>M</sexe>
+            <naissance>1998-08-22</naissance>
+            <numéro>198082205545852</numéro>
+            <adresse>
+                <étage>6</étage>
+                <numéro>50</numéro>
+                <rue>avenue Félix Viallet</rue>
+                <codePostal>38031</codePostal>
+                <ville>Grenoble</ville>
+                
+            </adresse>
+            <visite date="2015-12-08" intervenant="001">
+                <acte id="109"></acte>
+            </visite>
+        </patient>
+        <patient>
+            <!-- Femme,née le 08 mars 82 en France, 
+                    à Lyon (n° 23 dans le rhône),
+                    52e naissance dans cette ville 
+                             -->
+            <nom>Orouge</nom>
+            <prénom>Elvire</prénom>
+            <sexe>F</sexe>
+            <naissance>1982-03-08</naissance>
+            <numéro></numéro>
+            <adresse>
+                <étage></étage>
+                <numéro></numéro>
+                <rue>Rond-Point de la Croix de Vie</rue>
+                <codePostal>38700</codePostal>
+                <ville>La Tronche</ville>
+                
+            </adresse>
+            <visite date="2015-12-08" intervenant="">
+                <acte id="300"></acte>
+            </visite>
+        </patient>
+        <patient>
+            <!-- Femme ,née le 25 mars 75 en France, à Chambéry 
+                (n° 65 dans la Savoie)
+                    692e naissance
+                             -->
+            <nom>Pien</nom>
+            <prénom>Oscare</prénom>
+            <sexe>F</sexe>
+            <naissance>1975-03-25</naissance>
+            <numéro></numéro>
+            <adresse>
+                <étage></étage>
+                <numéro></numéro>
+                <rue>rue Casimir Brenier</rue>
+                <codePostal>38000</codePostal>
+                <ville>Grenoble</ville>   
+            </adresse>
+            <visite date="2015-12-08" intervenant="">
+                <acte id="101" id="104"></acte><!-- il est normal ici qu'il aie une erreur de validation
+ car c'est le fichier que nous avions ecrit avant l'etape de la création du fichier xmlSchema
+ et on a geré la validation plûtot dans cabinet.xml par la suite-->
+            </visite>
+        </patient>
+        <patient>
+            <!--garçon de 4 ans, né le 02 août 2011 en France, 
+            à Bordeaux (n° 63 dans la Gironde).
+                   35e naissance.-->
+            <nom>Kapoëtla</nom>
+            <prénom>Xavier</prénom>
+            <sexe>M</sexe>
+            <naissance>2011-08-02</naissance>
+            <numéro></numéro>
+            <adresse>
+                <étage></étage>
+                <numéro>25</numéro>
+                <rue>rue des Martyrs</rue>
+                <codePostal>38042</codePostal>
+                <ville>Grenoble</ville>
+                
+            </adresse>
+            <visite date="2015-12-08" intervenant="">
+                <acte id="111"></acte>
+            </visite>
+        </patient>
+        
+    </patients>
+    
+</cabinet>
+
+
+<root>
+    
+</root>
+

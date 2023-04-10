@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+<cab:cabinet
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:cab='http://univ-grenoble-alpes.fr/Dembele/Cabinet'
+    xsi:schemaLocation='http://univ-grenoble-alpes.fr/Dembele/Cabinet ../xsd/cabinet.xsd'><!--Définition et préfixage des namespaces pour l'instance du schema, le document xml
+         et le chemin d'accès vers le schema(schemaLocation) qui le contraint-->
+    <!--Nom du cabinet-->
+    <cab:nom>Soins à Grenoble</cab:nom>
+    <!--Adresse du cabinet-->
+    <cab:adresse>
+        <cab:numero>60</cab:numero>
+        <cab:rue>rue de la Chimie</cab:rue>
+        <cab:ville>Grenoble</cab:ville>
+        <cab:codePostal>38041</cab:codePostal>
+    </cab:adresse>
+    <!--Liste des infirmiers-->
+    <cab:infirmiers>
+        <!--Infirmier 1-->
+        <cab:infirmier id="001">
+            <cab:nom>Fréchie</cab:nom>
+            <cab:prenom>Sarah</cab:prenom>
+            <cab:photo>sarah.png</cab:photo>
+        </cab:infirmier>
+        <!--Infirmier 2-->
+        <cab:infirmier id="002">
+            <cab:nom>Stické</cab:nom>
+            <cab:prenom>Sophie</cab:prenom>
+            <cab:photo>sophie.jpg</cab:photo>
+        </cab:infirmier>
+        <!--Infirmier 3-->
+        <cab:infirmier id="003">
+            <cab:nom>Ochon</cab:nom>
+            <cab:prenom>Paul</cab:prenom>
+            <cab:photo>paul.png</cab:photo>
+        </cab:infirmier>
+    </cab:infirmiers>
+    <!--Liste des patients-->
+    <cab:patients>
+        <!--Patient 1-->
+        <cab:patient>
+            <!-- Homme, né en oaût 98 en France,
+            à Marseille (n° 55 en bouches du rhône)
+                        458e naissance
+                             -->
+            <cab:nom>Alécole</cab:nom>
+            <cab:prenom>Yvon</cab:prenom>
+            <cab:sexe>M</cab:sexe>
+            <cab:naissance>1998-08-22</cab:naissance>
+            <cab:numero>198082205545852</cab:numero>
+            <cab:adresse>
+                <cab:etage>6</cab:etage>
+                <cab:numero>50</cab:numero>
+                <cab:rue>avenue Félix Viallet</cab:rue>
+                <cab:ville>Grenoble</cab:ville>
+                <cab:codePostal>38031</cab:codePostal>
+            </cab:adresse>
+            <cab:visite date="2015-12-08" intervenant="001">
+                <cab:acte id="109"></cab:acte>
+            </cab:visite>
+        </cab:patient>
+        <!--Patient 2-->
+        <cab:patient>
+            <!-- Femme,née le 08 mars 82 en France, 
+                    à Lyon (n° 23 dans le rhône),
+                    52e naissance dans cette ville 
+                             -->
+            <cab:nom>Orouge</cab:nom>
+            <cab:prenom>Elvire</cab:prenom>
+            <cab:sexe>F</cab:sexe>
+            <cab:naissance>1982-03-08</cab:naissance>
+            
+            <cab:adresse>
+                <cab:rue>Rond-Point de la Croix de Vie</cab:rue>
+                <cab:ville>La Tronche</cab:ville>
+                <cab:codePostal>38700</cab:codePostal>
+            </cab:adresse>
+            <cab:visite date="2015-12-08">
+                <cab:acte id="300"></cab:acte>
+            </cab:visite>
+        </cab:patient>
+        <!--Patient 3-->
+        <cab:patient>
+            <!-- Femme ,née le 25 mars 75 en France, à Chambéry 
+                (n° 65 dans la Savoie)
+                    692e naissance
+                             -->
+            <cab:nom>Pien</cab:nom>
+            <cab:prenom>Oscare</cab:prenom>
+            <cab:sexe>F</cab:sexe>
+            <cab:naissance>1975-03-25</cab:naissance>
+            <cab:adresse>
+                <cab:rue>rue Casimir Brenier</cab:rue>
+                <cab:ville>Grenoble</cab:ville>
+                <cab:codePostal>38000</cab:codePostal>
+            </cab:adresse>
+            <cab:visite date="2015-12-08" >
+                <cab:acte id="101"></cab:acte>
+                <cab:acte id="104"></cab:acte>
+            </cab:visite>
+        </cab:patient>
+        <!--Patient 4-->
+        <cab:patient>
+            <!--garçon de 4 ans, né le 02 août 2011 en France, 
+            à Bordeaux (n° 63 dans la Gironde).
+                   35e naissance.-->
+            <cab:nom>Kapoëtla</cab:nom>
+            <cab:prenom>Xavier</cab:prenom>
+            <cab:sexe>M</cab:sexe>
+            <cab:naissance>2011-08-02</cab:naissance>
+            <cab:adresse>
+                <cab:numero>25</cab:numero>
+                <cab:rue>rue des Martyrs</cab:rue>
+                <cab:ville>Grenoble</cab:ville>
+                <cab:codePostal>38042</cab:codePostal>
+            </cab:adresse>
+            <cab:visite date="2015-12-08" >
+                <cab:acte id="111"></cab:acte>
+            </cab:visite>
+        </cab:patient>
+    </cab:patients>
+</cab:cabinet>
+

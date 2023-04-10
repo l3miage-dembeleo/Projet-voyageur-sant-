@@ -1,0 +1,61 @@
+<html xmlns:act="http://univ-grenoble-alpes.fr/Dembele/Actes" 
+      xmlns:cab="http://univ-grenoble-alpes.fr/Dembele/Cabinet"><!--Definition et prefixage des espaces de nom utilisés dans les fichiers 
+                                                                actes.xml et cabinet.xml-->
+    <head><!--entête du fichier html-->
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript"> 
+                    function openFacture(prenom, nom, actes) {
+                    var width  = 500;
+                    var height = 300;
+                    if(window.innerWidth) {
+                        var left = (window.innerWidth-width)/2;
+                        var top = (window.innerHeight-height)/2;
+                    }
+                    else {
+                        var left = (document.body.clientWidth-width)/2;
+                        var top = (document.body.clientHeight-height)/2;
+                    }
+                    var factureWindow = window.open('','facture','menubar=yes, scrollbars=yes, top='+top+', left='+left+', width='+width+', height='+height+'');
+                    factureText = "Facture pour : " + prenom + " " + nom;
+                    factureWindow.document.write(factureText);
+                    }
+
+                </script>
+        <title>Visite</title><!--Titre du fichier html-->
+        <title>CV_Aminata</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" 
+          rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    </head><!--Fin de l'entête du fichier html-->
+    <body><!--Debut corps du fichier html-->
+        <!--Affichage du message simple avec le nom de l'infirmier et le nombre de patients consultés par jour par ce dernier-->
+        <p>
+            Bonjour Sarah,
+            <br>
+                                
+                    Aujourd'hui, vous avez 1 patient(s)
+                
+        </p>
+         <!--Affichage de l'adresse du patient-->
+        <address>
+            Al&eacute;cole
+            <br>
+            50 avenue F&eacute;lix Viallet 38031 Grenoble
+            <br>
+        </address>
+        <!--Informations affichées lorsque l'on clique sur le bouton FACTURE!-->
+        <div class="header"><!--application de la classe heager de la feuille de style sur le boutton FACTURE!-->
+            <div class="cv-container"><!--application de la classe cv-container de la feuille de style sur le boutton FACTURE!-->
+                <button onclick="
+                        openFacture('Yvon', 
+                        'Al&eacute;cole',
+                        '')
+                    ">
+                    FACTURE !
+                </button>
+            </div>
+        </div>
+    </body><!--Fin du corps du fichier html-->
+</html>
